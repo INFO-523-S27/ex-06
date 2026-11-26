@@ -6,6 +6,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 import pytest
+from sklearn.metrics import roc_auc_score
 
 import ds
 

@@ -149,25 +149,7 @@ def decisionplot(model, X, y, resolution=0.02):
     - Predict class labels over the grid
     - Plot decision boundary and data points
     """
-    x_min, x_max = X.iloc[:, 0].min() - 1, X.iloc[:, 0].max() + 1
-    y_min, y_max = X.iloc[:, 1].min() - 1, X.iloc[:, 1].max() + 1
-
-    xx, yy = np.meshgrid(
-        np.arange(x_min, x_max, resolution),
-        np.arange(y_min, y_max, resolution)
-    )
-
-    # TODO: predict over the grid
-    Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
-    Z = Z.reshape(xx.shape)
-
-    plt.figure(figsize=(8, 6))
-    plt.contourf(xx, yy, Z, alpha=0.3)
-    plt.scatter(X.iloc[:, 0], X.iloc[:, 1], c=y, edgecolor="k")
-    plt.xlabel("PC1")
-    plt.ylabel("PC2")
-    plt.title("Decision Tree Decision Boundary")
-    plt.show()
+    raise NotImplementedError("Implement decisionplot using the steps above.")
 
 
 # ---------------------------------------------------------------------
@@ -203,9 +185,4 @@ def compute_auc_roc(model, X_test, y_test):
     - Compute fpr, tpr
     - Return AUC
     """
-    probs = model.predict_proba(X_test)[:, 1]
-
-    fpr, tpr, _ = roc_curve(y_test, probs)
-    auc_score = roc_auc_score(y_test, probs)
-
-    return fpr, tpr, auc_score
+    raise NotImplementedError("Compute the ROC curve and AUC using model probabilities.")
